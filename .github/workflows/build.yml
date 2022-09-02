@@ -45,6 +45,11 @@ jobs:
           username: ${{ github.repository_owner }}
           password: ${{ github.token  }}
 
+      # docker/build-push-action doesn't allow capital letters in the URL
+      - name: Get repo in lowercase
+        run: |
+          echo "LOWER_REPO=${GITHUB_REPOSITORY,,}" >> ${GITHUB_ENV}
+
       # Build and push the container to the GitHub Container
       # Repository. The container will be tagged as "latest"
       # and with the short SHA of the commit.
@@ -54,10 +59,10 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          cache-from: type=registry,ref=ghcr.io/${{ github.repository }}:latest
+          cache-from: type=registry,ref=ghcr.io/${{ env.LOWER_REPO }}:latest
           cache-to: type=inline
           tags: |
-            ghcr.io/${{ github.repository }}:latest
-            ghcr.io/${{ github.repository }}:${{ steps.sha_tag.outputs.tag }}
+            ghcr.io/${{ env.LOWER_REPO }}:latest
+            ghcr.io/${{ env.LOWER_REPO }}:${{ steps.sha_tag.outputs.tag }}
           build-args: |
             git_sha=${{ github.sha }}
