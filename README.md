@@ -1,5 +1,9 @@
 # Python template
 
+[![License](https://img.shields.io/github/license/ChrisLovering/python-template)](https://github.com/ChrisLovering/python-template)
+[![CI](https://github.com/ChrisLovering/python-template/actions/workflows/lint.yml/badge.svg)](https://github.com/ChrisLovering/python-template/actions/workflows/lint.yml)
+[![pre-commit.ci status](https://results.pre-commit.ci/badge/github/ChrisLovering/python-template/main.svg)](https://results.pre-commit.ci/latest/github/ChrisLovering/python-template/main)
+
 # Summary
 A template Python repo with docker, linting & CI.
 
