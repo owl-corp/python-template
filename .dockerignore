@@ -1,0 +1,8 @@
+# Ignore everything
+**
+
+# Except what we need
+!app
+!pyproject.toml
+!poetry.lock
+!LICENSE

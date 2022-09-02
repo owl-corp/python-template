@@ -1,0 +1,40 @@
+[tool.poetry]
+name = "python-temeplate"
+version = "1.0.0"
+description = "A template project for Python applications."
+authors = ["Chris Lovering <chris.lovering.95@gmail.com>"]
+license = "MIT"
+
+[tool.poetry.dependencies]
+python = "3.10.*"
+
+pydantic = "*"
+
+[tool.poetry.dev-dependencies]
+flake8 = "*"
+flake8-annotations = "*"
+flake8-bugbear = "*"
+flake8-docstrings = "*"
+flake8-string-format = "*"
+flake8-tidy-imports = "*"
+flake8-todo = "*"
+flake8-isort = "*"
+
+black = "*"
+pep8-naming = "*"
+pre-commit = "*"
+taskipy = "*"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.taskipy.tasks]
+start = "python -m app"
+lint = "pre-commit run --all-files"
+precommit = "pre-commit install"
+isort = "isort ."
+
+[tool.isort]
+profile = "black"
+line_length = 120
