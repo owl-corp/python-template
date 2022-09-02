@@ -1,4 +1,4 @@
-FROM --platform=linux/amd64 python:3.10-slim
+FROM --platform=linux/amd64 python:3.10-slim as base
 
 # Set pip to have no saved cache
 ENV PIP_NO_CACHE_DIR=false \
@@ -10,6 +10,17 @@ ENV PIP_NO_CACHE_DIR=false \
   APP_DIR="/app"
 
 ENV PATH="$POETRY_HOME/bin:/$INSTALL_DIR/.venv/bin:$PATH"
+
+# Set Git SHA environment variable
+ARG git_sha="development"
+ENV GIT_SHA=$git_sha
+
+RUN groupadd -g 61000 app \
+  && useradd -g 61000 -l -r -u 61000 app
+
+##############################################################################
+
+FROM base as builder
 
 RUN apt-get update \
   && apt-get -y upgrade \
@@ -23,15 +34,16 @@ WORKDIR $INSTALL_DIR
 COPY pyproject.toml poetry.lock ./
 RUN poetry install --only main
 
-# Define Git SHA build argument
-ARG git_sha="development"
+##############################################################################
 
-# Set Git SHA environment variable for Sentry
-ENV GIT_SHA=$git_sha
+FROM base as application
 
 # Copy the source code in last to optimize rebuilding the image
+COPY --from=builder $INSTALL_DIR $INSTALL_DIR
+
 WORKDIR $APP_DIR
 COPY . .
 
+USER app
 ENTRYPOINT ["python3"]
 CMD ["-m", "app"]
