@@ -2,7 +2,7 @@ on:
   workflow_call
 
 jobs:
-  lint-test:
+  lint:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
