@@ -20,6 +20,13 @@ repos:
       - id: isort
         name: isort (python)
 
+  - repo: https://github.com/python-poetry/poetry
+    rev: '1.2.2'
+    hooks:
+      - id: poetry-check
+      - id: poetry-export
+        args: ["-f", "requirements.txt", "-o", "main-requirements.txt"]
+
   - repo: local
     hooks:
       - id: flake8
