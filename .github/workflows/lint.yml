@@ -18,11 +18,27 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Install Python Dependencies
-        uses: HassanAbouelela/actions/setup-python@setup-python_v1.3.1
+        uses: HassanAbouelela/actions/setup-python@setup-python_v1.3.2
         with:
           # Set dev=true to install flake8 extensions, which are dev dependencies
           dev: true
-          python_version: '3.10'
+          python_version: '3.11'
+
+      - name: Ensure main-requirements.txt is up to date
+        shell: bash
+        run: |
+          echo "::group::Add export plugin to Poetry"
+          poetry self add poetry-plugin-export
+          echo "::endgroup::"
+
+          echo "::group::Export Poetry"
+          poetry export -f requirements.txt --output temp-requirements.txt -vvv
+          echo "::endgroup::"
+
+          if ! cmp -s "main-requirements.txt" "temp-requirements.txt"; then
+            echo "::error file=main-requirements.txt,title=Requirements out of date!::Run 'poetry export -f requirements.txt --output main-requirements.txt'"
+            exit 1
+          fi
 
       # We will not run `flake8` here, as we will use a separate flake8
       # action. As pre-commit does not support user installs, we set
