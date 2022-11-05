@@ -3,6 +3,5 @@
 
 # Except what we need
 !app
-!pyproject.toml
-!poetry.lock
+!main-requirements.txt
 !LICENSE
