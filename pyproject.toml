@@ -19,6 +19,7 @@ flake8-string-format = "*"
 flake8-tidy-imports = "*"
 flake8-todo = "*"
 flake8-isort = "*"
+poetry-plugin-export = "*"
 
 black = "*"
 pep8-naming = "*"
