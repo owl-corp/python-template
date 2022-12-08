@@ -9,11 +9,10 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Install Python Dependencies
-        uses: HassanAbouelela/actions/setup-python@setup-python_v1.3.2
+        uses: HassanAbouelela/actions/setup-python@setup-python_v1.3.3
         with:
-          # Set dev=true to install flake8 extensions, which are dev dependencies
-          dev: true
           python_version: '3.11'
+          install_args: "--only linting"
 
       - name: Ensure main-requirements.txt is up to date
         shell: bash
