@@ -10,7 +10,7 @@ python = "3.11.*"
 
 pydantic = "*"
 
-[tool.poetry.dev-dependencies]
+[tool.poetry.group.linting.dependencies]
 flake8 = "*"
 flake8-annotations = "*"
 flake8-bugbear = "*"
@@ -19,15 +19,16 @@ flake8-string-format = "*"
 flake8-tidy-imports = "*"
 flake8-todo = "*"
 flake8-isort = "*"
-poetry-plugin-export = "*"
-
 black = "*"
 pep8-naming = "*"
+
+[tool.poetry.group.dev.dependencies]
+poetry-plugin-export = "*"
 pre-commit = "*"
 taskipy = "*"
 
 [build-system]
-requires = ["poetry-core>=1.0.0"]
+requires = ["poetry-core>=1.2.0"]
 build-backend = "poetry.core.masonry.api"
 
 [tool.taskipy.tasks]
