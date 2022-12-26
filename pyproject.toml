@@ -21,10 +21,10 @@ flake8-todo = "*"
 flake8-isort = "*"
 black = "*"
 pep8-naming = "*"
+pre-commit = "*"
 
 [tool.poetry.group.dev.dependencies]
 poetry-plugin-export = "*"
-pre-commit = "*"
 taskipy = "*"
 
 [build-system]
