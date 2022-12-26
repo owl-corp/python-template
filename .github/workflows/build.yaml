@@ -1,5 +1,14 @@
 on:
   workflow_call:
+    inputs:
+      sha-tag:
+        description: "A short-form SHA tag for the commit that triggered this flow"
+        required: true
+        type: string
+      lower-repo:
+        description: "The repository name in lowercase"
+        required: true
+        type: string
 
 jobs:
   build:
@@ -7,12 +16,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # Create a commit SHA-based tag for the container repositories
-      - name: Create SHA Container Tag
-        id: sha_tag
-        run: |
-          tag=$(cut -c 1-7 <<< $GITHUB_SHA)
-          echo "::set-output name=tag::$tag"
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v2
@@ -24,11 +27,6 @@ jobs:
           username: ${{ github.repository_owner }}
           password: ${{ github.token }}
 
-      # docker/build-push-action doesn't allow capital letters in the URL
-      - name: Get repo in lowercase
-        run: |
-          echo "LOWER_REPO=${GITHUB_REPOSITORY,,}" >> ${GITHUB_ENV}
-
       # Build and push the container to the GitHub Container
       # Repository. The container will be tagged as "latest"
       # and with the short SHA of the commit.
@@ -36,10 +34,10 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           push: true
-          cache-from: type=registry,ref=ghcr.io/${{ env.LOWER_REPO }}:latest
+          cache-from: type=registry,ref=ghcr.io/${{ inputs.lower-repo }}:latest
           cache-to: type=inline
           tags: |
-            ghcr.io/${{ env.LOWER_REPO }}:latest
-            ghcr.io/${{ env.LOWER_REPO }}:${{ steps.sha_tag.outputs.tag }}
+            ghcr.io/${{ inputs.lower-repo }}:latest
+            ghcr.io/${{ inputs.lower-repo }}:${{ inputs.sha-tag }}
           build-args: |
             git_sha=${{ github.sha }}
