@@ -13,8 +13,13 @@ concurrency:
 jobs:
   generate-inputs:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
+
     outputs:
       sha-tag: ${{ steps.sha-tag.outputs.sha-tag }}
+
     steps:
       - name: Create SHA Container Tag
         id: sha-tag
@@ -24,7 +29,8 @@ jobs:
       # docker/build-push-action doesn't allow capital letters in the URL
       - name: Get repo in lowercase
         run: |
-          echo "lower-repo=${GITHUB_REPOSITORY,,}" >> $GITHUB_OUTPUT
+          echo "lower-repo=${GITHUB_REPOSITORY,,}" >> $GITHUB_OUTPU
+
   lint:
     uses: ./.github/workflows/lint.yaml
 
