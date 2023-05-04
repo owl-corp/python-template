@@ -9,17 +9,6 @@ repos:
       - id: trailing-whitespace
         args: [--markdown-linebreak-ext=md]
 
-  - repo: https://github.com/pre-commit/pygrep-hooks
-    rev: v1.9.0
-    hooks:
-      - id: python-check-blanket-noqa
-
-  - repo: https://github.com/pycqa/isort
-    rev: v5.11.3
-    hooks:
-      - id: isort
-        name: isort (python)
-
   - repo: https://github.com/python-poetry/poetry
     rev: '1.3.0'
     hooks:
@@ -29,20 +18,30 @@ repos:
 
   - repo: local
     hooks:
-      - id: flake8
-        name: Flake8
-        description: This hook runs flake8 within our project's environment.
-        entry: poetry run flake8
-        language: system
-        types: [python]
-        require_serial: true
       - id: black
         name: black
         description: This hook runs black within our project's environment.
-        entry: poetry run black .
+        entry: poetry run black
         language: system
         types: [python]
         require_serial: true
+
+      - id: isort
+        name: isort
+        description: This hook runs isort within our project's environment.
+        entry: poetry run isort
+        language: system
+        types: [python]
+        require_serial: true
+
+      - id: ruff
+        name: ruff
+        description: Run ruff linting
+        entry: poetry run ruff check --force-exclude
+        language: system
+        'types_or': [python, pyi]
+        require_serial: true
+        args: [--fix, --exit-non-zero-on-fix]
 
 ci:
   autofix_commit_msg: |
@@ -53,5 +52,5 @@ ci:
   autoupdate_branch: ''
   autoupdate_commit_msg: '[pre-commit.ci] pre-commit autoupdate'
   autoupdate_schedule: weekly
-  skip: [flake8, black]  # pre-commit.ci doesn't support running under poetry right now.
+  skip: [ruff, black]  # pre-commit.ci doesn't support running under poetry right now.
   submodules: false
