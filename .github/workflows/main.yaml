@@ -19,6 +19,7 @@ jobs:
 
     outputs:
       sha-tag: ${{ steps.sha-tag.outputs.sha-tag }}
+      lower-repo: ${{ steps.lower-repo.outputs.lower-repo }}
 
     steps:
       - name: Create SHA Container Tag
@@ -28,6 +29,7 @@ jobs:
           echo "sha-tag=$tag" >> $GITHUB_OUTPUT
       # docker/build-push-action doesn't allow capital letters in the URL
       - name: Get repo in lowercase
+        id: lower-repo
         run: |
           echo "lower-repo=${GITHUB_REPOSITORY,,}" >> $GITHUB_OUTPUT
 
