@@ -33,11 +33,10 @@ jobs:
       - name: Build and push
         uses: docker/build-push-action@v4
         with:
-          push: true
+          push: ${{ github.ref == github.event.repository.default_branch }}
           cache-from: type=registry,ref=ghcr.io/${{ inputs.lower-repo }}:latest
           cache-to: type=inline
           tags: |
             ghcr.io/${{ inputs.lower-repo }}:latest
             ghcr.io/${{ inputs.lower-repo }}:${{ inputs.sha-tag }}
-          build-args: |
-            git_sha=${{ github.sha }}
+          build-args: git_sha=${{ github.sha }}

@@ -35,7 +35,6 @@ jobs:
     uses: ./.github/workflows/lint.yaml
 
   build:
-    if: ${{ github.ref == 'refs/heads/main' }}
     uses: ./.github/workflows/build.yaml
     needs:
       - lint
