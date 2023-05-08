@@ -40,6 +40,7 @@ extend-exclude = [".cache"]
 ignore = [
     "ANN002", "ANN003",
     "D100", "D104", "D105", "D107", "D203", "D212", "D214", "D215", "D416",
+    "I",
 ]
 line-length = 120
-select = ["ANN", "B", "C4", "D", "DTZ", "E", "F", "ISC", "INT", "N", "PGH", "PIE", "Q", "RET", "RSE", "RUF", "S", "SIM", "T20", "TID", "UP", "W"]
+select = ["ALL"]
