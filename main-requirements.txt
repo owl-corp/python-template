@@ -1,4 +1,4 @@
-pydantic==1.10.8 ; python_full_version >= "3.11.0" and python_full_version < "3.12.0" \
+pydantic==1.10.8 ; python_version >= "3.11.dev0" and python_version < "3.12.dev0" \
     --hash=sha256:052d8654cb65174d6f9490cc9b9a200083a82cf5c3c5d3985db765757eb3b375 \
     --hash=sha256:0c6fafa0965b539d7aab0a673a046466d23b86e4b0e8019d25fd53f4df62c277 \
     --hash=sha256:1243d28e9b05003a89d72e7915fdb26ffd1d39bdd39b00b7dbe4afae4b557f9d \
@@ -35,6 +35,6 @@ pydantic==1.10.8 ; python_full_version >= "3.11.0" and python_full_version < "3.
     --hash=sha256:e82d4566fcd527eae8b244fa952d99f2ca3172b7e97add0b43e2d97ee77f81ab \
     --hash=sha256:f90c1e29f447557e9e26afb1c4dbf8768a10cc676e3781b6a577841ade126b85 \
     --hash=sha256:f9613fadad06b4f3bc5db2653ce2f22e0de84a7c6c293909b48f6ed37b83c61f
-typing-extensions==4.6.2 ; python_full_version >= "3.11.0" and python_full_version < "3.12.0" \
+typing-extensions==4.6.2 ; python_version >= "3.11.dev0" and python_version < "3.12.dev0" \
     --hash=sha256:06006244c70ac8ee83fa8282cb188f697b8db25bc8b4df07be1873c43897060c \
     --hash=sha256:3a8b36f13dd5fdc5d1b16fe317f5668545de77fa0b8e02006381fd49d731ab98
