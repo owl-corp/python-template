@@ -28,11 +28,6 @@ build-backend = "poetry.core.masonry.api"
 start = "python -m app"
 lint = "pre-commit run --all-files"
 precommit = "pre-commit install"
-isort = "isort ."
-
-[tool.isort]
-profile = "black"
-line_length = 120
 
 [tool.ruff]
 target-version = "py311"
@@ -40,7 +35,6 @@ extend-exclude = [".cache"]
 ignore = [
     "ANN002", "ANN003",
     "D100", "D104", "D105", "D107", "D203", "D212", "D214", "D215", "D416",
-    "I",
 ]
 line-length = 120
 select = ["ALL"]

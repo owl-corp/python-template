@@ -14,7 +14,7 @@ repos:
     hooks:
       - id: poetry-check
       - id: poetry-export
-        args: ["-f", "requirements.txt", "-o", "main-requirements.txt"]
+        args: ["-o", "main-requirements.txt"]
 
   - repo: local
     hooks:
@@ -22,14 +22,6 @@ repos:
         name: black
         description: This hook runs black within our project's environment.
         entry: poetry run black
-        language: system
-        types: [python]
-        require_serial: true
-
-      - id: isort
-        name: isort
-        description: This hook runs isort within our project's environment.
-        entry: poetry run isort
         language: system
         types: [python]
         require_serial: true
