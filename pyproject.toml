@@ -9,6 +9,7 @@ license = "MIT"
 python = "3.11.*"
 
 pydantic = "*"
+pydantic-settings = "*"
 
 [tool.poetry.group.linting.dependencies]
 black = "*"
@@ -28,6 +29,10 @@ build-backend = "poetry.core.masonry.api"
 start = "python -m app"
 lint = "pre-commit run --all-files"
 precommit = "pre-commit install"
+
+[tool.black]
+line-length = 120
+target-version = ['py311']
 
 [tool.ruff]
 target-version = "py311"
