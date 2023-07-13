@@ -38,6 +38,7 @@ target-version = "py311"
 extend-exclude = [".cache"]
 ignore = [
     "ANN002", "ANN003",
+    "C901",
     "D100", "D104", "D105", "D107", "D203", "D212", "D214", "D215", "D416",
 ]
 line-length = 120
