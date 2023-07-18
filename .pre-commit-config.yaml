@@ -34,15 +34,3 @@ repos:
         'types_or': [python, pyi]
         require_serial: true
         args: [--fix, --exit-non-zero-on-fix]
-
-ci:
-  autofix_commit_msg: |
-    [pre-commit.ci] auto fixes from pre-commit.com hooks
-
-    for more information, see https://pre-commit.ci
-  autofix_prs: true
-  autoupdate_branch: ''
-  autoupdate_commit_msg: '[pre-commit.ci] pre-commit autoupdate'
-  autoupdate_schedule: weekly
-  skip: [ruff, black]  # pre-commit.ci doesn't support running under poetry right now.
-  submodules: false
