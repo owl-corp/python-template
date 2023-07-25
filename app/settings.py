@@ -1,11 +1,7 @@
-import pydantic_settings
+from pydantic_settings import BaseSettings
 
 
-class _Settings(
-    pydantic_settings.BaseSettings,
-    env_file=".env",
-    env_file_encoding="utf-8",
-):
+class _Settings(BaseSettings, env_file=".env", env_file_encoding="utf-8"):
     debug: bool = False
     git_sha: str = "development"
 
