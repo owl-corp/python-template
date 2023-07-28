@@ -2,7 +2,6 @@
 
 [![License](https://img.shields.io/github/license/owl-corp/python-template)](https://github.com/owl-corp/python-template)
 [![CI](https://github.com/owl-corp/python-template/actions/workflows/main.yaml/badge.svg)](https://github.com/owl-corp/python-template/actions/workflows/main.yaml)
-[![pre-commit.ci status](https://results.pre-commit.ci/badge/github/owl-corp/python-template/main.svg)](https://results.pre-commit.ci/latest/github/owl-corp/python-template/main)
 
 ## Summary
 A template Python repo with docker, linting & CI.
