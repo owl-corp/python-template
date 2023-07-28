@@ -12,7 +12,6 @@ pydantic-settings = "*"
 
 [tool.poetry.group.linting.dependencies]
 black = "*"
-isort = "*"
 pre-commit = "*"
 ruff = "*"
 
