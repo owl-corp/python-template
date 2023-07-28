@@ -17,6 +17,6 @@ if root.handlers:
 logging.basicConfig(
     format="%(asctime)s - %(name)s %(levelname)s: %(message)s",
     datefmt="%D %H:%M:%S",
-    level=logging.DEBUG if SETTINGS.debug else logging.DEBUG,
+    level=logging.DEBUG if SETTINGS.debug else logging.INFO,
     handlers=[console_handler],
 )
