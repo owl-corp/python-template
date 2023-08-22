@@ -3,5 +3,5 @@
 
 # Except what we need
 !app
-!main-requirements.txt
+!requirements.txt
 !LICENSE

@@ -14,13 +14,13 @@ jobs:
           python_version: "3.11"
           install_args: "--only linting"
 
-      - name: Ensure main-requirements.txt is up to date
+      - name: Ensure requirements.txt is up to date
         shell: bash
         run: |
-          poetry export -f requirements.txt --output temp-requirements.txt -vvv
+          poetry export --output temp-requirements.txt -vvv
 
-          if ! cmp -s "main-requirements.txt" "temp-requirements.txt"; then
-            echo "::error file=main-requirements.txt,title=Requirements out of date!::Run 'poetry export -f requirements.txt --output main-requirements.txt'"
+          if ! cmp -s "requirements.txt" "temp-requirements.txt"; then
+            echo "::error file=requirements.txt,title=Requirements out of date!::Run 'poetry export --output requirements.txt'"
             exit 1
           fi
 

@@ -7,7 +7,7 @@ ENV GIT_SHA=$git_sha
 # Install project dependencies
 WORKDIR /app
 COPY main-requirements.txt ./
-RUN pip install -r main-requirements.txt
+RUN pip install -r requirements.txt
 
 # Copy the source code in last to optimize rebuilding the image
 COPY . .
