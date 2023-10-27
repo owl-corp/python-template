@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "python-template"
-version = "1.1.0"
+version = "1.2.0"
 description = "A template project for Python applications."
 authors = ["Chris Lovering <chris.lovering.95@gmail.com>"]
 license = "MIT"
@@ -17,16 +17,10 @@ ruff = "*"
 
 [tool.poetry.group.dev.dependencies]
 poetry-plugin-export = "*"
-taskipy = "*"
 
 [build-system]
 requires = ["poetry-core>=1.5.0"]
 build-backend = "poetry.core.masonry.api"
-
-[tool.taskipy.tasks]
-start = "python -m app"
-lint = "pre-commit run --all-files"
-precommit = "pre-commit install"
 
 [tool.ruff]
 target-version = "py312"

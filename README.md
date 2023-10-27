@@ -10,7 +10,7 @@ To copy this simply press the "Use this template" green button near the top of t
 ## Changes required copying
 - Pin the dependencies in [`pyproject.toml`](pyproject.toml) to a specific version
 - Update the `tool.poetry` section of in [`pyproject.toml`](pyproject.toml) to be relevant to your project
-- Run `poetry lock` and `poetry export --output requirements.txt`
+- Run `make lock` to lock poetry dependencies and export to a `requirements.txt` file
 - Rename [`_.github/`](_.github/) to `.github` so that CI runs
 
 ## Changes to consider after copying
