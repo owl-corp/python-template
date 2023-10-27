@@ -6,7 +6,7 @@ authors = ["Chris Lovering <chris.lovering.95@gmail.com>"]
 license = "MIT"
 
 [tool.poetry.dependencies]
-python = "3.11.*"
+python = "3.12.*"
 
 pydantic = "*"
 pydantic-settings = "*"
@@ -34,7 +34,7 @@ line-length = 120
 target-version = ['py311']
 
 [tool.ruff]
-target-version = "py311"
+target-version = "py312"
 extend-exclude = [".cache"]
 ignore = [
     "ANN002", "ANN003",

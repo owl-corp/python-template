@@ -11,7 +11,7 @@ jobs:
       - name: Install Python Dependencies
         uses: HassanAbouelela/actions/setup-python@setup-python_v1.4.1
         with:
-          python_version: "3.11"
+          python_version: "3.12"
           install_args: "--only linting"
 
       - name: Ensure requirements.txt is up to date
