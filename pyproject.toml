@@ -12,7 +12,6 @@ pydantic = "*"
 pydantic-settings = "*"
 
 [tool.poetry.group.linting.dependencies]
-black = "*"
 pre-commit = "*"
 ruff = "*"
 
@@ -21,7 +20,7 @@ poetry-plugin-export = "*"
 taskipy = "*"
 
 [build-system]
-requires = ["poetry-core>=1.2.0"]
+requires = ["poetry-core>=1.5.0"]
 build-backend = "poetry.core.masonry.api"
 
 [tool.taskipy.tasks]
@@ -29,17 +28,19 @@ start = "python -m app"
 lint = "pre-commit run --all-files"
 precommit = "pre-commit install"
 
-[tool.black]
-line-length = 120
-target-version = ['py311']
-
 [tool.ruff]
 target-version = "py312"
 extend-exclude = [".cache"]
+select = ["ALL"]
 ignore = [
     "ANN002", "ANN003",
     "C901",
+    "CPY001",
     "D100", "D104", "D105", "D107", "D203", "D212", "D214", "D215", "D416",
+
+    # Rules suggested to be ignored when using ruff format
+    "COM812", "COM819", "D206", "E111", "E114", "E117", "E501", "ISC001", "Q000", "Q001", "Q002", "Q003", "W191",
 ]
 line-length = 120
-select = ["ALL"]
+unsafe-fixes = true
+preview = true
