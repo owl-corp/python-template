@@ -1,3 +1,10 @@
+.PHONEY: setup
+setup: sync precommit
+
+.PHONEY: sync
+sync:
+	poetry install --sync
+
 .PHONY: lock
 lock:
 	poetry lock
