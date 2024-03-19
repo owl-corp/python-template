@@ -17,6 +17,7 @@ To copy this simply press the "Use this template" green button near the top of t
 - Update the [LICENSE](LICENSE) file
 - Update the schedule of the [dependabot config](.github/dependabot.yml)
 - Add a static type checker, such as mypy or Pyright
+- Delete [`.dockerignore](.dockerignore), [`docker-compose.yml`](docker-compose.yml) and the [build step](_.github/workflows/build.yaml) of CI if you do not plan to use docker.
 
 
 # Contributing
