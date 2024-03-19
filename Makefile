@@ -1,20 +1,18 @@
-.PHONEY: setup
-setup: sync precommit
+.PHONEY: setup sync lock lint precommit
 
-.PHONEY: sync
+setup: sync precommit lint
+
 sync:
 	poetry install --sync
 
-.PHONY: lock
 lock:
 	poetry lock
-	poetry export --only main --output requirements.txt
+	@poetry export --only main --output requirements.txt
+	poetry install --sync --no-root
 	pre-commit run --files pyproject.toml poetry.lock requirements.txt
 
-.PHONY: lint
 lint:
 	poetry run pre-commit run --all-files
 
-.PHONY: precommit
 precommit:
 	poetry run pre-commit install
