@@ -1,4 +1,6 @@
-FROM --platform=linux/amd64 python:3.12-slim
+ARG python_version=3.14-slim
+
+FROM python:$python_version
 
 # Define Git SHA build argument for sentry
 ARG git_sha="development"
