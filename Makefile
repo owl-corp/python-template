@@ -1,18 +1,25 @@
-.PHONEY: setup sync lock lint precommit
+.PHONY: setup
+setup: install precommit lint
 
-setup: sync precommit lint
+.PHONY: install
+install:
+	uv sync --frozen --all-groups
 
-sync:
-	poetry install --sync
+.PHONY: just-lock
+just-lock:
+	uv lock --upgrade
 
-lock:
-	poetry lock
-	@poetry export --only main --output requirements.txt
-	poetry install --sync --no-root
-	pre-commit run --files pyproject.toml poetry.lock requirements.txt
+.PHONY: lock
+lock: just-lock install
 
+.PHONY: outdated
+outdated:
+	uv tree --outdated --all-groups
+
+.PHONY: lint
 lint:
-	poetry run pre-commit run --all-files
+	uv run pre-commit run --all-files
 
+.PHONY: precommit
 precommit:
-	poetry run pre-commit install
+	uv run pre-commit install

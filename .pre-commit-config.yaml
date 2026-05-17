@@ -13,10 +13,10 @@ repos:
 
   - repo: local
     hooks:
-      - id: poetry
-        name: poetry-check
-        description: Checks the validity of the pyproject.toml file.
-        entry: poetry check
+      - id: uv-check
+        name: uv lock check
+        description: Checks the validity of the uv.lock file.
+        entry: uv lock --check
         language: system
         files: pyproject.toml
         pass_filenames: false

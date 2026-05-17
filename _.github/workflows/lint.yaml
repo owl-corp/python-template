@@ -8,21 +8,21 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Install Python Dependencies
-        uses: HassanAbouelela/actions/setup-python@setup-python_v1.4.2
+      - name: Install uv
+        uses: astral-sh/setup-uv@v7
         with:
-          python_version: "3.14"
-          install_args: "--only linting"
+          enable-cache: true
+          resolution-strategy: "lowest"
+          cache-dependency-glob: "uv.lock"
+          activate-environment: true
 
-      - name: Ensure requirements.txt is up to date
-        shell: bash
-        run: |
-          poetry export --output temp-requirements.txt -vvv
+      - name: "Set up Python"
+        uses: actions/setup-python@v6
+        with:
+          python-version-file: "pyproject.toml"
 
-          if ! cmp -s "requirements.txt" "temp-requirements.txt"; then
-            echo "::error file=requirements.txt,title=Requirements out of date!::Run 'poetry export --output requirements.txt'"
-            exit 1
-          fi
+      - name: Install the project
+        run: uv sync --group dev
 
       - name: Run pre-commit hooks
         run: SKIP=ruff-lint pre-commit run --all-files

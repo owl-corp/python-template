@@ -1,26 +1,26 @@
-[tool.poetry]
+[project]
 name = "python-template"
 version = "1.2.0"
 description = "A template project for Python applications."
-authors = ["Chris Lovering <chris.lovering.95@gmail.com>"]
-license = "MIT"
+authors = [
+    {name = "Chris Lovering", email = "python-template@chrisjl.dev"},
+    {name = "Fredrick L.", email = "fredrick@pydis.wtf"},
+]
+license = {text = "MIT"}
+requires-python = "~=3.14.0"
+dependencies = [
+    "pydantic",
+    "pydantic-settings",
+]
 
-[tool.poetry.dependencies]
-python = "3.14.*"
+[tool.uv]
+required-version = ">=0.9.7"
 
-pydantic = "*"
-pydantic-settings = "*"
-
-[tool.poetry.group.linting.dependencies]
-pre-commit = "*"
-ruff = "*"
-
-[tool.poetry.group.dev.dependencies]
-poetry-plugin-export = "*"
-
-[build-system]
-requires = ["poetry-core>=1.5.0"]
-build-backend = "poetry.core.masonry.api"
+[dependency-groups]
+linting = [
+    "pre-commit",
+    "ruff",
+]
 
 [tool.ruff]
 target-version = "py314"

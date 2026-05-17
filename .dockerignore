@@ -3,5 +3,5 @@
 
 # Except what we need
 !app
-!requirements.txt
-!LICENSE
+!pyproject.toml
+!uv.lock
