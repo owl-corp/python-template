@@ -22,6 +22,10 @@ linting = [
     "ruff",
 ]
 
+dev = [
+    {include-group = "linting"},
+]
+
 [tool.ruff]
 target-version = "py314"
 extend-exclude = [".cache"]
