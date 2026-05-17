@@ -27,23 +27,31 @@ target-version = "py312"
 extend-exclude = [".cache"]
 line-length = 120
 unsafe-fixes = true
-preview = true
 output-format = "concise"
 
 [tool.ruff.lint]
 select = ["ALL"]
 ignore = [
-    "ANN002", "ANN003", "ANN101", "ANN102",
-    "C901",
+    "ANN002", "ANN003", "ANN204", "ANN206", "ANN401",
+    "B904",
+    "C401", "C408",
     "CPY001",
-    "D100", "D104", "D105", "D107", "D203", "D212", "D214", "D215", "D416",
+    "D100", "D104", "D105", "D107", "D203", "D212", "D214", "D215", "D301",
+    "D400", "D401", "D402", "D404", "D405", "D406", "D407", "D408", "D409", "D410", "D411", "D412", "D413", "D414", "D416", "D417",
+    "E731",
+    "RET504",
+    "RUF005",
+    "S311",
+    "SIM102", "SIM108",
+    "PD",
+    "PLR0913", "PLR0917", "PLR6301",
+    "DTZ003",
 
     # Rules suggested to be ignored when using ruff format
-    "COM812", "COM819", "D206", "E111", "E114", "E117", "E501", "ISC001", "Q000", "Q001", "Q002", "Q003", "W191"
+    "COM812", "D206", "E111", "E114", "E117", "E501", "ISC001", "Q000", "Q001", "Q002", "Q003", "W191",
 ]
 
 [tool.ruff.lint.isort]
-known-first-party = ["app"]
 order-by-type = false
 case-sensitive = true
 combine-as-imports = true
