@@ -1,5 +1,5 @@
 .PHONY: setup
-setup: install precommit lint
+setup: install prek lint
 
 .PHONY: install
 install:
@@ -18,8 +18,8 @@ outdated:
 
 .PHONY: lint
 lint:
-	uv run pre-commit run --all-files
+	uv run prek run --all-files
 
-.PHONY: precommit
-precommit:
-	uv run pre-commit install
+.PHONY: prek
+prek:
+	uv run prek install
